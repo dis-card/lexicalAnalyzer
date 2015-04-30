@@ -11,7 +11,7 @@ public abstract class AbstractTokenizer implements Tokenizer {
 
 
 
-	public boolean isSpace ( char input) {
+	protected boolean isSpace ( char input) {
 
 		boolean result = false;
 		
@@ -19,6 +19,8 @@ public abstract class AbstractTokenizer implements Tokenizer {
 
 			case ' ':
 			case '\t':
+			case '\n':
+			case '\r':
 				result = true;
 		}
 
@@ -29,7 +31,7 @@ public abstract class AbstractTokenizer implements Tokenizer {
 
 
 
-	public boolean isDigit ( int asciiValue ) {
+	protected boolean isDigit ( int asciiValue ) {
 
 		boolean result = false;
 		
@@ -41,7 +43,7 @@ public abstract class AbstractTokenizer implements Tokenizer {
 
 	}
 
-	public boolean isDigit ( char input ) {
+	protected boolean isDigit ( char input ) {
 
 		boolean result = false;
 		
@@ -65,7 +67,7 @@ public abstract class AbstractTokenizer implements Tokenizer {
 	}
 
 
-	public boolean isOperator ( int asciiValue ) {
+	protected boolean isOperator ( int asciiValue ) {
 
 		boolean result = false;
 
@@ -78,7 +80,7 @@ public abstract class AbstractTokenizer implements Tokenizer {
 	}
 
 
-	public boolean isOperator ( char input ) {
+	protected boolean isOperator ( char input ) {
 
 		boolean result = false;
 
@@ -94,6 +96,102 @@ public abstract class AbstractTokenizer implements Tokenizer {
 
 		return result;
 	}
+	
+	protected boolean isChar ( char input ) {
+		
+		boolean result = false;
+		
+		switch ( input ) {
+		
+			case 'a':
+			case 'b':
+			case 'c':
+			case 'd':
+			case 'e':
+			case 'f':
+			case 'g':
+			case 'h':
+			case 'i':
+			case 'j':
+			case 'k':
+			case 'l':
+			case 'm':
+			case 'n':
+			case 'o':
+			case 'p':
+			case 'q':
+			case 'r':
+			case 's':
+			case 't':
+			case 'u':
+			case 'v':
+			case 'w':
+			case 'x':
+			case 'y':
+			case 'z':
+			case 'A':
+			case 'B':
+			case 'C':
+			case 'D':
+			case 'E':
+			case 'F':
+			case 'G':
+			case 'H':
+			case 'I':
+			case 'J':
+			case 'K':
+			case 'L':
+			case 'M':
+			case 'N':
+			case 'O':
+			case 'P':
+			case 'Q':
+			case 'R':
+			case 'S':
+			case 'T':
+			case 'U':
+			case 'V':
+			case 'W':
+			case 'X':
+			case 'Y':
+			case 'Z':
+			case '_':
+				result = true;
+			
+		}		
+		
+		return result;
+		
+	}
+	
+	protected boolean isKeyWord ( String input ) {
+		
+		boolean result = false;
+		
+		if ( input.equals(BREAK) 
+				|| input.equals(CASE)
+				|| input.equals(CHAR)
+				|| input.equals(CONTINUE)
+				|| input.equals(DO)
+				|| input.equals(DOUBLE)
+				|| input.equals(ELSE)
+				|| input.equals(FLOAT)
+				|| input.equals(FOR)
+				|| input.equals(IF)
+				|| input.equals(INT)
+				|| input.equals(LONG)
+				|| input.equals(SWITCH)
+				|| input.equals(VOID)
+				|| input.equals(WHILE)) {
+			result = true;
+			
+		}		
+		
+		return result;		
+		
+	}
+	
+	
 
 	
 

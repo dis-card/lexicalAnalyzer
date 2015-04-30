@@ -6,7 +6,13 @@ public class Token {
 	public static enum Type {
 		OPS,
 		NUM,
-		SPACE
+		SPACE,		
+		KEYWORD,
+		IDENTIFIER,
+		OPENPRAN,	// (
+		CLOSEPRAN,	// )
+		OPENBRACE,	// {
+		CLOSEBRACE	// }
 	}
 
 	private Type type;
@@ -31,7 +37,7 @@ public class Token {
 
 	public String toString() {
 
-		return getValue()+" "+getType().toString();
+		return "<"+getValue()+","+getType().toString()+">";
 
 	}
 

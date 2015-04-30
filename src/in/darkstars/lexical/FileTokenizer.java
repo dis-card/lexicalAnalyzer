@@ -90,14 +90,37 @@ public class FileTokenizer extends AbstractTokenizer{
 					srcFile.seek( srcFile.getFilePointer() - 1 );
 				}
 
+			} else if ( isChar( ( char ) ch )) {
+				
+				Token token = new Token();
+				token.appendValue( ( char ) ch);
+
+				while ( ( isChar ( (char) (ch = srcFile.read()) ) ) ) {
+					
+					token.appendValue( ( char ) ch);
+					
+				}
+				
+				if ( isKeyWord( token.getValue() ) ) {
+					token.setType(Token.Type.KEYWORD);
+				} else {
+					token.setType(Token.Type.IDENTIFIER);
+				}
+				
+				tokenList.add( token );
+				if ( ch != EOF ) {
+					srcFile.seek( srcFile.getFilePointer() - 1 );
+				}
 			} else {
 
-				System.out.println("FATAL:Unknown charcter encountered");
+				System.out.println("FATAL:Unknown character encountered");
+				break;
 
-				System.exit(1);
+				//System.exit(1);
 			}
 
 		}
+		srcFile.close();
 
 
 		return tokenList;
